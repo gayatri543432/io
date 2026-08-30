@@ -1,5 +1,6 @@
 <div class="card">
   <div class="card-body">
+   <h2 class="text-center">{{isineditmode?'Update Todo':'Add Todo'}}</h2>
 
     <form #todoForm="ngForm" (ngSubmit)="onSubmit()">
 
@@ -8,13 +9,14 @@
         type="text"
         required
         name="title"
-        [(ngModel)]="title"
+        ngModel
         class="form-control">
 
       <label for="completed">Status</label>
       <select
+        required
         name="completed"
-        [(ngModel)]="completed"
+        ngModel
         class="form-control mb-3">
 
         <option [ngValue]="true">Completed</option>

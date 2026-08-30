@@ -24,40 +24,45 @@ export class TodoFormComponent implements OnInit {
 
   ngOnChanges(changes: SimpleChanges): void {
 
-    if (changes['selectedTodo'] && this.selectedTodo) {
+     if (changes['selectedTodo'] && this.selectedTodo) {
 
-      this.isineditmode = true;
+    this.isineditmode = true;
 
-      this.title = this.selectedTodo.title;
-      this.completed = this.selectedTodo.completed;
+    if (this.todoForm) {
+      this.todoForm.setValue({
+        title: this.selectedTodo.title,
+        completed: this.selectedTodo.completed
+      });
     }
+  }
   }
 
   onSubmit() {
 
+     if (this.todoForm.valid) {
+
     let newObj: ITodo = {
-      id: Date.now().toString(),
-      title: this.title,
-      completed: this.completed
+     ...this.todoForm.value, id: Date.now().toString()
     };
 
     this.todoSubmit.emit(newObj);
 
-    this.title = '';
-    this.completed = false;
+    this.todoForm.reset()
   }
+} 
 
   onUpdate() {
+   if (this.todoForm.valid) {
 
     let todo: ITodo = {
-      id: this.selectedTodo.id,
-      title: this.title,
-      completed: this.completed
+      ...this.todoForm.value,
+      id: this.selectedTodo.id
     };
 
     this.emitUpdate.emit(todo);
 
-    this.todoForm.reset()
+    this.todoForm.reset();
     this.isineditmode = false;
+  }
   }
 }

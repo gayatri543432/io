@@ -1,14 +1,19 @@
 
 <ul class="list-group">
-    <li class="list-group-item d-flex justify-content-between" *ngFor="let todo of todosArr">
-        <strong>{{todo.title}}</strong>
-         <span
+    <li class="list-group-item d-flex" *ngFor="let todo of todosArr">
+       
+        <div class="todo-title">
+             <strong>{{todo.title}}</strong>
+        </div>
+        <div class="todo-status">
+             <span
             class="badge text-center"
             [ngClass]="todo.completed ? 'badge-success' : 'badge-warning'"
-        >
+             >
             {{ todo.completed ? 'Completed' : 'Pending' }}
         </span>
-        <div>
+        </div>
+        <div class="todo-actions">
             <button 
             (click)="OnEdit(todo)"
             mat-raised-button color="primary" class="mr-3">Edit</button>

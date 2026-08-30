@@ -31,8 +31,7 @@ export class TodoDashboardComponent implements OnInit {
 
   
   onEdit(todo: ITodo) {
-
-    this.selectedTodo = { ...todo };
+    this.selectedTodo = todo
   }
 
 
@@ -50,8 +49,6 @@ export class TodoDashboardComponent implements OnInit {
         'Todo Updated successfully'
       );
     }
-
-    this.selectedTodo = undefined!;
   }
 
  

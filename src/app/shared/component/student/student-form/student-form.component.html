@@ -1,6 +1,7 @@
 
 <div class="card">
     <div class="card-body">
+        <h2 class="text-center">{{isInEditMode?'Update Student':'Add Student'}}</h2>
         <form #stdForm="ngForm" (ngSubmit)="onSubmit()">
             <label for="name">Full Name*</label>
             <input type="text" required name="name" ngModel class="form-control">

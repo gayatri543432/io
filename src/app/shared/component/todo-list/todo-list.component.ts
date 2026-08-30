@@ -15,7 +15,6 @@ export class TodoListComponent implements OnInit {
   ngOnInit(): void {
   }
    OnEdit(todo: ITodo) {
-    
     this.emitEdit.emit(todo);
   }
 
