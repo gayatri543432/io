@@ -1,0 +1,17 @@
+
+<div class="card">
+    <div class="card-body">
+        <form #stdForm="ngForm" (ngSubmit)="onSubmit()">
+            <label for="name">Full Name*</label>
+            <input type="text" required name="name" ngModel class="form-control">
+            <label for="email">Email</label>
+            <input type="text" required name="email" ngModel class="form-control">
+            <label for="contact">Contact</label>
+            <input type="text" required name="contact" ngModel class="form-control mb-3">
+
+            <button *ngIf="!isInEditMode" mat-raised-button color="primary">Add Student</button>
+            <button (click)="updateStd()" *ngIf="isInEditMode"  mat-raised-button color="warn">Update Student</button>
+
+        </form>
+    </div>
+</div>
