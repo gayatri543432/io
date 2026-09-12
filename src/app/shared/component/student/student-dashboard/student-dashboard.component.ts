@@ -9,11 +9,12 @@ import { SnackbarService } from 'src/app/shared/services/snackbar.service';
   styleUrls: ['./student-dashboard.component.scss']
 })
 export class StudentDashboardComponent implements OnInit {
-  studentsArr:IStudent[]=students
+  studentsArr:IStudent[]=[]
   editObj!:IStudent
   constructor( private _snackBarSevice :SnackbarService) { }
 
   ngOnInit(): void {
+    this.studentsArr=students
   }
   onSubmit(std:IStudent){
     this.studentsArr.unshift(std)

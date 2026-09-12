@@ -1,27 +1,35 @@
 
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <th>Sr. No</th>
-            <th>Full Name</th>
-            <th>Email</th>
-            <th>Contact</th>
-            <th>Edit</th>
-            <th>Remove</th>
-        </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let std of stdArr; index as i">
-        <td>{{i+1}}</td>
-        <td>{{std.name}}</td>
-        <td>{{std.email}}</td>
-        <td>{{std.contact}}</td>
-        <td><button 
-            (click)="editStd(std)"
-            mat-raised-button color="primary">Edit</button></td>
-        <td><button
-            (click)="removeStd(std.id)"
-            mat-raised-button color="warn">Remove</button></td>
-      </tr>
-    </tbody>
-</table>
+<div class="card">
+    <div class="card-body  table-responsive" *ngIf="stdArr.length>0 ; else NoStd">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Sr. No</th>
+                    <th>Full Name</th>
+                    <th>Email</th>
+                    <th>Contact</th>
+                    <th>Edit</th>
+                    <th>Remove</th>
+                </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let std of stdArr; index as i ;  tarckBy:tarckById">
+                <td>{{i+1}}</td>
+                <td>{{std.name}}</td>
+                <td>{{std.email}}</td>
+                <td>{{std.contact}}</td>
+                <td><button 
+                    (click)="editStd(std)"
+                    mat-raised-button color="primary">Edit</button></td>
+                <td><button
+                    (click)="removeStd(std.id)"
+                    mat-raised-button color="warn">Remove</button></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<ng-template #NoStd>
+    <p class="alert alert-info mb-0">NO STUDENT DATA!!</p>
+</ng-template>

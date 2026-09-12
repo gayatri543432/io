@@ -16,6 +16,11 @@ export class StudentListComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  tarckById(index:number,std:IStudent){
+    return std.id
+  }
+
   editStd(std:IStudent){
     this.editstd.emit(std)
   }
